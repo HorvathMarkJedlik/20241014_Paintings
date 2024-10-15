@@ -64,3 +64,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Template inheritance
+https://laravel.com/docs/11.x/blade#layouts-using-template-inheritance
+
+Új controller létrehozása
+php artisan make:controller CarController
+
+Új component osztály + view létrehozása
+php artisan make:component header
+
+Passing Data to Components
+https://laravel.com/docs/11.x/blade#passing-data-to-components
