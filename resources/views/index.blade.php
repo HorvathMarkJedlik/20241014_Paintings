@@ -16,7 +16,11 @@
                 <label for="artist" class="form-label">Artist</label>
                 <select type="text" class="form-select mx-3" id="artist" name="artist">
                     @foreach ($artists as $artist)
-                        <option value="{{ $artist }}">{{ $artist }}</option>
+                        @if (old('artist') == $artist)
+                            <option selected value="{{ $artist }}">{{ $artist }}</option>
+                        @else
+                            <option value="{{ $artist }}">{{ $artist }}</option>
+                        @endif
                     @endforeach
                 </select>
                 <button type="submit" class="btn btn-primary">Submit</button>

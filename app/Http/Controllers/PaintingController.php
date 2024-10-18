@@ -45,12 +45,11 @@ class PaintingController extends Controller
     {
         $filteredPaintings = [];
         foreach ($this->paintings as $paint) {
-            if (str_contains( strtolower($paint['Painting']), strtolower($request->title)))
+            if (str_contains(strtolower($paint['Painting']), strtolower($request->title)))
             {
                 $filteredPaintings[] = $paint;
             }
         }
-
         $request->flash();
 
         return view ('index', ['paintings' => $filteredPaintings, 'artists' => $this->artists]);
@@ -58,16 +57,27 @@ class PaintingController extends Controller
 
     public function searchByArtist(Request $request)
     {
-        $filteredPaintings = [];
+        $filteredPaintings = $this->getPaintingsByArtist($request->artist);
+        $request->flash();
+        return view ('index', ['paintings' => $filteredPaintings, 'artists' => $this->artists]);
+    }
+
+    public function showArtistPaints($artist){
+        $filteredPaintings = $this->getPaintingsByArtist($artist);
+        return view ('index', ['paintings' => $filteredPaintings, 'artists' => $this->artists]);
+    }
+
+    private function getPaintingsByArtist($artist){
         foreach ($this->paintings as $paint) {
-            if ($paint['Artist'] == $request->artist)
+            if ($paint['Artist'] == $artist)
             {
                 $filteredPaintings[] = $paint;
             }
         }
+        return $filteredPaintings;
+    }
 
-        $request->flash();
-
-        return view ('index', ['paintings' => $filteredPaintings, 'artists' => $this->artists]);
+    public function showArtists(){
+        return view('artists', ['artists' => $this->artists]);
     }
 }

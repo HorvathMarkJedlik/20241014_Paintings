@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PaintingController::class, 'index']);
 
+Route::get('/artists', [PaintingController::class, 'showArtists']);
+
 Route::get('/paintings/{title}', [PaintingController::class, 'show']);
+
+Route::get('/paintings/{artist}', [PaintingController::class, 'showArtistPaints']);
 
 Route::post('/paintings/search-by-title', [PaintingController::class, 'searchByTitle']);
 
