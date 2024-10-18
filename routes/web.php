@@ -8,3 +8,5 @@ Route::get('/', [PaintingController::class, 'index']);
 Route::get('/paintings/{title}', [PaintingController::class, 'show']);
 
 Route::post('/paintings/search-by-title', [PaintingController::class, 'searchByTitle']);
+
+Route::post('/paintings/search-by-artist', [PaintingController::class, 'searchByArtist']);
