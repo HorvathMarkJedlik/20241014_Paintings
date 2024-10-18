@@ -36,7 +36,7 @@ class PaintingController extends Controller
     {
         $filteredPaintings = [];
         foreach ($this->paintings as $paint) {
-            if (str_contains($paint['Painting'], $request->title))
+            if (str_contains( strtolower($paint['Painting']), strtolower($request->title)))
             {
                 $filteredPaintings[] = $paint;
             }
